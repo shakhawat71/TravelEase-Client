@@ -4,6 +4,9 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { AuthContext } from "../context/AuthContext";
 import Swal from "sweetalert2";
+// eslint-disable-next-line no-unused-vars
+import { motion } from "framer-motion";
+
 
 
 export default function MyBookings() {
@@ -63,6 +66,7 @@ export default function MyBookings() {
 };
 
 
+  // eslint-disable-next-line no-unused-vars
   const calculateTotal = (start, end, price) => {
     const startDate = new Date(start);
     const endDate = new Date(end);
@@ -90,56 +94,78 @@ export default function MyBookings() {
           <p className="text-gray-600">You have no bookings yet.</p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {bookings.map((b) => (
-            <div
-              key={b._id}
-              className="bg-white border border-blue-100 rounded-2xl shadow-sm hover:shadow-lg transition p-4"
-            >
-              <img
-                src={b.coverImage}
-                alt={b.vehicleName}
-                className="w-full h-44 object-cover rounded-xl"
-              />
+        <motion.div
+  initial="hidden"
+  animate="visible"
+  variants={{
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.15,
+      },
+    },
+  }}
+  className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+>
+  {bookings.map((booking) => (
+    <motion.div
+      key={booking._id}
+      variants={{
+        hidden: { opacity: 0, y: 40 },
+        visible: { opacity: 1, y: 0 },
+      }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      whileHover={{ y: -10 }}
+      className="bg-white border border-blue-100 rounded-2xl 
+      shadow-sm hover:shadow-2xl 
+      transition-all duration-500 overflow-hidden"
+    >
+      {/* Image */}
+      <div className="overflow-hidden rounded-t-2xl">
+        <motion.img
+          src={booking.coverImage}
+          alt={booking.vehicleName}
+          className="w-full h-44 object-cover"
+          whileHover={{ scale: 1.1 }}
+          transition={{ duration: 0.4 }}
+        />
+      </div>
 
-              <div className="mt-4 space-y-2">
-                <h3 className="text-xl font-semibold text-blue-600">
-                  {b.vehicleName}
-                </h3>
+      {/* Content */}
+      <div className="p-4 space-y-2">
+        <h3 className="text-lg sm:text-xl font-semibold text-blue-600">
+          {booking.vehicleName}
+        </h3>
 
-                <p className="text-sm text-gray-600">
-                  <span className="font-medium">Location:</span> {b.location}
-                </p>
+        <p className="text-sm text-gray-600">
+          Location: {booking.location}
+        </p>
 
-                <p className="text-sm text-gray-600">
-                  <span className="font-medium">Start:</span>{" "}
-                  {new Date(b.startDate).toLocaleDateString()}
-                </p>
+        <p className="text-sm text-gray-600">
+          From: {booking.startDate}
+        </p>
 
-                <p className="text-sm text-gray-600">
-                  <span className="font-medium">End:</span>{" "}
-                  {new Date(b.endDate).toLocaleDateString()}
-                </p>
+        <p className="text-sm text-gray-600">
+          To: {booking.endDate}
+        </p>
 
-                <p className="text-sm text-gray-600">
-                  <span className="font-medium">Total Price:</span> $
-                  {calculateTotal(
-                    b.startDate,
-                    b.endDate,
-                    b.pricePerDay
-                  )}
-                </p>
+        <p className="text-sm font-medium text-gray-700">
+          ${booking.pricePerDay} / day
+        </p>
 
-                <button
-                  onClick={() => handleCancel(b._id)}
-                  className="w-full mt-3 bg-red-500 text-white py-2 rounded-lg hover:bg-red-600 transition"
-                >
-                  Cancel Booking
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={() => handleCancel(booking._id)}
+          className="w-full mt-3 bg-red-500 text-white py-2 rounded-lg hover:bg-red-600 transition"
+        >
+          Cancel Booking
+        </motion.button>
+      </div>
+    </motion.div>
+  ))}
+</motion.div>
+
       )}
     </div>
   );
