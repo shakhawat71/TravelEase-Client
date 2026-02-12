@@ -17,6 +17,8 @@ import MyBookings from "./pages/MyBookings"
 import MyVehicle from "./pages/MyVehicle"
 import AuthProvider from "./context/AuthContext";
 import PrivateRoute from "./routes/PrivateRoute";
+import VehicleDetails from "./pages/VehicleDetails";
+
 
 
 const router = createBrowserRouter([
@@ -65,6 +67,14 @@ const router = createBrowserRouter([
           </PrivateRoute>
         )
       },
+      {
+        path:"/vehicle/:id",
+        element: (
+          <PrivateRoute>
+            <VehicleDetails></VehicleDetails>
+          </PrivateRoute>
+        )
+      }
     ],
   },
 ]);
