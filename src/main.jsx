@@ -2,6 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
+
 import "./index.css";
 
 import MainLayout from "./layouts/MainLayout";
@@ -13,6 +15,7 @@ import NotFound from "./pages/NotFound";
 import AddVehicle from "./pages/AddVehicle"
 import MyBookings from "./pages/MyBookings"
 import MyVehicle from "./pages/MyVehicle"
+import AuthProvider from "./context/AuthContext";
 
 const router = createBrowserRouter([
   {
@@ -54,6 +57,10 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+      <Toaster position="top-right" />
+    </AuthProvider>
   </React.StrictMode>
 );
+
