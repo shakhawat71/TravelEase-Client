@@ -24,6 +24,7 @@ export default function VehicleDetails() {
         setLoading(true);
         const res = await axios.get(`${baseURL}/vehicles/${id}`);
         setVehicle(res.data);
+      // eslint-disable-next-line no-unused-vars
       } catch (error) {
         toast.error("Failed to load vehicle");
       } finally {

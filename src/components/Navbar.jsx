@@ -38,7 +38,7 @@ export default function Navbar() {
 
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-white rounded-box w-52"
+            className="menu menu-sm dropdown-content mt-3 z-1 p-2 shadow bg-white rounded-box w-52"
           >
             <li><NavLink to="/" className={navLinkStyle}>Home</NavLink></li>
             <li><NavLink to="/allVehicles" className={navLinkStyle}>All Vehicles</NavLink></li>
@@ -105,7 +105,7 @@ export default function Navbar() {
             {/* Dropdown */}
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-4 shadow bg-white rounded-box w-72 border border-blue-100"
+              className="menu menu-sm dropdown-content mt-3 z-1 p-4 shadow bg-white rounded-box w-72 border border-blue-100"
             >
               <li className="pointer-events-none">
                 <div className="flex items-center gap-3 bg-white">

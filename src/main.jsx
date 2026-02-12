@@ -18,6 +18,8 @@ import MyVehicle from "./pages/MyVehicle"
 import AuthProvider from "./context/AuthContext";
 import PrivateRoute from "./routes/PrivateRoute";
 import VehicleDetails from "./pages/VehicleDetails";
+import UpdateVehicle from "./pages/UpdateVehicle";
+
 
 
 
@@ -72,6 +74,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <VehicleDetails></VehicleDetails>
+          </PrivateRoute>
+        )
+      },
+      {
+        path: "/updateVehicle/:id",
+        element: (
+          <PrivateRoute>
+            <UpdateVehicle></UpdateVehicle>
           </PrivateRoute>
         )
       }

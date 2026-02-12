@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
+// eslint-disable-next-line no-unused-vars
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
@@ -55,6 +56,7 @@ export default function MyVehicle() {
 
       setVehicles(vehicles.filter((v) => v._id !== id));
     }
+  // eslint-disable-next-line no-unused-vars
   } catch (error) {
     Swal.fire({
       title: "Error!",

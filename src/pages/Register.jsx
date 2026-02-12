@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+// eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import { Eye, EyeOff } from "lucide-react";
 
@@ -122,7 +123,7 @@ export default function Register() {
             />
             <span
               onClick={() => setShowPassword((p) => !p)}
-              className="absolute right-3 top-[42px] cursor-pointer"
+              className="absolute right-3 top-10.5 cursor-pointer"
               title={showPassword ? "Hide password" : "Show password"}
             >
               {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
@@ -144,9 +145,9 @@ export default function Register() {
 
         {/* Divider */}
         <div className="flex items-center my-6">
-          <div className="flex-grow border-t border-blue-200"></div>
+          <div className="grow border-t border-blue-200"></div>
           <span className="mx-3 text-blue-400 text-sm">OR</span>
-          <div className="flex-grow border-t border-blue-200"></div>
+          <div className="grow border-t border-blue-200"></div>
         </div>
 
         {/* Google */}
