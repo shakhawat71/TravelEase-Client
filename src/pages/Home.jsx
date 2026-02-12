@@ -64,7 +64,7 @@ export default function Home() {
     <div className="bg-white">
     {/* HERO SLIDER SECTION */}
     <section className="relative h-75 sm:h-105 md:h-130 overflow-hidden">
-      {/* Background (Image Slider) */}
+      {/* Background */}
       <div
         className="absolute inset-0 bg-center bg-cover transition-all duration-1000"
         style={{
@@ -74,30 +74,44 @@ export default function Home() {
         }}
       />
 
-      {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-black/60" />
+      {/* Light Overlay */}
+      <div className="absolute inset-0 bg-black/30" />
 
-      {/* Content */}
+      {/* Animated Content*/}
       <div className="relative z-10 h-full flex flex-col justify-center items-center text-center text-white px-4">
-        <h1 className="text-3xl md:text-5xl font-bold mb-4">
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="text-3xl md:text-5xl font-bold mb-4"
+        >
           Find Your Perfect Ride with TravelEase
-        </h1>
-        <p className="max-w-2xl mb-6 text-lg">
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.15, duration: 0.7 }}
+          className="max-w-2xl mb-6 text-sm sm:text-base md:text-lg"
+        >
           Discover the best vehicles for your journey. Safe, affordable, and easy booking
           experience.
-        </p>
-        <Link
-          to="/allVehicles"
-          className="bg-blue-600 px-6 py-3 rounded-xl font-semibold hover:bg-blue-700 transition"
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.3, duration: 0.5 }}
         >
-          Explore Vehicles
-        </Link>
+          <Link
+            to="/allVehicles"
+            className="bg-blue-600 px-5 py-2.5 sm:px-6 sm:py-3 rounded-xl font-semibold hover:bg-blue-700 transition shadow-lg"
+          >
+            Explore Vehicles
+          </Link>
+        </motion.div>
       </div>
     </section>
-
-
-
-
 
       {/* LATEST VEHICLES SECTION */}
       <section className="max-w-7xl mx-auto px-4 py-14">
