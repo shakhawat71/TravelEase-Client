@@ -2,10 +2,15 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
+
 
 export default function VehicleDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { user } = useContext(AuthContext);
+
 
   const baseURL = "http://localhost:3000";
 
@@ -68,10 +73,35 @@ export default function VehicleDetails() {
     createdAt,
   } = vehicle;
 
-  const handleBookNow = () => {
-    // Booking feature will added next reminded here for me!
-    toast.success("Booking feature will be added next");
+  const handleBookNow = async () => {
+  if (availability === "Booked") {
+    return toast.error("This vehicle is already booked!");
+  }
+
+  const bookingData = {
+    vehicleId: vehicle._id,
+    vehicleName,
+    coverImage,
+    pricePerDay,
+    location,
+    owner,
+    bookingDate: new Date().toISOString(),
+    userEmail: user?.email,
+    userName: user?.displayName,
   };
+
+  try {
+    const res = await axios.post(`${baseURL}/bookings`, bookingData);
+
+    if (res.data?.insertedId) {
+      toast.success("Booking Confirmed ✅");
+      navigate("/myBookings");
+    }
+  } catch (error) {
+    toast.error(error.message);
+  }
+};
+
 
   return (
     <div className="bg-white min-h-screen max-w-6xl mx-auto px-4 py-10">
