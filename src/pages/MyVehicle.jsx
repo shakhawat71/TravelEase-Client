@@ -3,6 +3,8 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
+import Swal from "sweetalert2";
+
 
 export default function MyVehicle() {
   const { user } = useContext(AuthContext);
@@ -27,23 +29,41 @@ export default function MyVehicle() {
   }, [user]);
 
   const handleDelete = async (id) => {
-    const confirmDelete = window.confirm(
-      "Are you sure you want to delete this vehicle?"
-    );
+  const result = await Swal.fire({
+    title: "Delete Vehicle?",
+    text: "This vehicle will be permanently removed!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#2563eb",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, Delete It",
+    cancelButtonText: "Cancel",
+  });
 
-    if (!confirmDelete) return;
+  if (!result.isConfirmed) return;
 
-    try {
-      const res = await axios.delete(`${baseURL}/vehicles/${id}`);
+  try {
+    const res = await axios.delete(`${baseURL}/vehicles/${id}`);
 
-      if (res.data.deletedCount > 0) {
-        toast.success("Vehicle deleted successfully..");
-        setVehicles(vehicles.filter((v) => v._id !== id));
-      }
-    } catch (error) {
-      toast.error(error.message);
+    if (res.data.deletedCount > 0) {
+      await Swal.fire({
+        title: "Deleted!",
+        text: "Your vehicle has been removed.",
+        icon: "success",
+        confirmButtonColor: "#2563eb",
+      });
+
+      setVehicles(vehicles.filter((v) => v._id !== id));
     }
-  };
+  } catch (error) {
+    Swal.fire({
+      title: "Error!",
+      text: "Failed to delete vehicle.",
+      icon: "error",
+    });
+  }
+};
+
 
   if (loading) {
     return (

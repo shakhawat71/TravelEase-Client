@@ -3,6 +3,8 @@ import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { AuthContext } from "../context/AuthContext";
+import Swal from "sweetalert2";
+
 
 export default function VehicleDetails() {
   const { id } = useParams();
@@ -65,41 +67,77 @@ export default function VehicleDetails() {
   } = vehicle;
 
   const handleBookNow = async () => {
-    if (!startDate || !endDate) {
-      return toast.error("Please select booking dates");
-    }
+  if (!startDate || !endDate) {
+    return toast.error("Please select booking dates");
+  }
 
-    if (new Date(startDate) > new Date(endDate)) {
-      return toast.error("End date must be after start date");
-    }
+  if (new Date(startDate) > new Date(endDate)) {
+    return toast.error("End date must be after start date");
+  }
 
-    const bookingData = {
-      vehicleId: vehicle._id,
-      vehicleName,
-      coverImage,
-      pricePerDay,
-      location,
-      owner,
-      startDate,
-      endDate,
-      bookingDate: new Date().toISOString(),
-      userEmail: user?.email,
-      userName: user?.displayName,
-    };
+  const totalDays =
+    (new Date(endDate) - new Date(startDate)) /
+      (1000 * 60 * 60 * 24) +
+    1;
 
-    try {
-      const res = await axios.post(`${baseURL}/bookings`, bookingData);
+  const totalPrice = totalDays * pricePerDay;
 
-      if (res.data?.insertedId) {
-        toast.success("Booking Confirmed ✅");
-        navigate("/myBookings");
-      }
-    } catch (error) {
-      toast.error(
-        error.response?.data?.message || "Booking failed"
-      );
-    }
+  const confirm = await Swal.fire({
+    title: "Confirm Booking?",
+    html: `
+      <p><strong>Vehicle:</strong> ${vehicleName}</p>
+      <p><strong>From:</strong> ${startDate}</p>
+      <p><strong>To:</strong> ${endDate}</p>
+      <p><strong>Total Days:</strong> ${totalDays}</p>
+      <p><strong>Total Price:</strong> $${totalPrice}</p>
+    `,
+    icon: "question",
+    showCancelButton: true,
+    confirmButtonColor: "#2563eb",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Confirm Booking",
+  });
+
+  if (!confirm.isConfirmed) return;
+
+  const bookingData = {
+    vehicleId: vehicle._id,
+    vehicleName,
+    coverImage,
+    pricePerDay,
+    location,
+    owner,
+    startDate,
+    endDate,
+    bookingDate: new Date().toISOString(),
+    userEmail: user?.email,
+    userName: user?.displayName,
   };
+
+  try {
+    const res = await axios.post(`${baseURL}/bookings`, bookingData);
+
+    if (res.data?.insertedId) {
+      await Swal.fire({
+        title: "Booked Successfully!",
+        text: "Your vehicle has been booked.",
+        icon: "success",
+        confirmButtonColor: "#2563eb",
+      });
+
+      navigate("/myBookings");
+    }
+  } catch (error) {
+    Swal.fire({
+      title: "Booking Failed",
+      text:
+        error.response?.data?.message ||
+        "This vehicle is already booked for selected dates.",
+      icon: "error",
+    });
+  }
+};
+
 
   return (
     <div className="bg-white min-h-screen max-w-6xl mx-auto px-4 py-10">
