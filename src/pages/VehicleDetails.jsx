@@ -19,7 +19,8 @@ export default function VehicleDetails() {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
 
-  const baseURL = "http://localhost:3000";
+  const baseURL = import.meta.env.VITE_API_URL;
+
 
   useEffect(() => {
     const loadVehicle = async () => {

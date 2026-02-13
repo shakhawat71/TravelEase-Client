@@ -15,7 +15,8 @@ export default function MyVehicle() {
   const [vehicles, setVehicles] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const baseURL = "http://localhost:3000";
+  const baseURL = import.meta.env.VITE_API_URL;
+
 
   useEffect(() => {
     if (user?.email) {

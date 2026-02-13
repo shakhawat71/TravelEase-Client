@@ -12,7 +12,8 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const [latestVehicles, setLatestVehicles] = useState([]);
 
-  const baseURL = "http://localhost:3000";
+  const baseURL = import.meta.env.VITE_API_URL;
+
 
   useEffect(() => {
   const loadVehicles = async () => {

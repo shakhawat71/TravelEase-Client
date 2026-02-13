@@ -9,7 +9,7 @@ export default function AddVehicle() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 
-  const baseURL = "http://localhost:3000";
+  const baseURL = import.meta.env.VITE_API_URL;
 
   const handleAddVehicle = async (e) => {
     e.preventDefault();

@@ -14,7 +14,8 @@ export default function UpdateVehicle() {
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
 
-  const baseURL = "http://localhost:3000";
+  const baseURL = import.meta.env.VITE_API_URL;
+
 
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
