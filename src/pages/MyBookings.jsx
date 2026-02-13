@@ -77,14 +77,14 @@ export default function MyBookings() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-white">
+      <div className="min-h-screen flex items-center justify-center bg-base-100">
         <span className="loading loading-spinner loading-lg text-blue-600"></span>
       </div>
     );
   }
 
   return (
-    <div className="bg-white min-h-screen max-w-7xl mx-auto px-4 py-8">
+    <div className="bg-base-100 min-h-screen max-w-7xl mx-auto px-4 py-8">
       <h2 className="text-3xl font-bold text-blue-600 mb-6">
         My Bookings
       </h2>
@@ -116,7 +116,7 @@ export default function MyBookings() {
       }}
       transition={{ duration: 0.5, ease: "easeOut" }}
       whileHover={{ y: -10 }}
-      className="bg-white border border-blue-100 rounded-2xl 
+      className="bg-base-100 border border-blue-100 rounded-2xl 
       shadow-sm hover:shadow-2xl 
       transition-all duration-500 overflow-hidden"
     >

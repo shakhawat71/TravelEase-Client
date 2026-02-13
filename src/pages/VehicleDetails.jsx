@@ -106,7 +106,7 @@ export default function VehicleDetails() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-white">
+      <div className="min-h-screen flex items-center justify-center bg-base-100">
         <span className="loading loading-spinner loading-lg text-blue-600"></span>
       </div>
     );
@@ -125,13 +125,13 @@ export default function VehicleDetails() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
-      className="min-h-screen bg-white px-4 py-10"
+      className="min-h-screen bg-base-100 px-4 py-10"
     >
       <motion.div
         initial={{ y: 40, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6 }}
-        className="max-w-5xl mx-auto bg-white rounded-2xl shadow-lg border border-blue-100 overflow-hidden"
+        className="max-w-5xl mx-auto bg-base-100 rounded-2xl shadow-lg border border-blue-100 overflow-hidden"
       >
         {/* Image */}
         <motion.img

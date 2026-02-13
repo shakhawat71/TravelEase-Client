@@ -61,7 +61,7 @@ export default function Home() {
   }, [heroImages]);
 
   return (
-    <div className="bg-white">
+    <div className="bg-base-100">
     {/* HERO SLIDER SECTION */}
     <section className="relative h-75 sm:h-105 md:h-130 overflow-hidden">
       {/* Background */}
@@ -152,7 +152,7 @@ export default function Home() {
               }}
               transition={{ duration: 0.6, ease: "easeOut" }}
               whileHover={{ y: -10 }}
-              className="bg-white border border-blue-100 rounded-2xl 
+              className="bg-base-100 border border-blue-100 rounded-2xl 
               shadow-sm hover:shadow-2xl 
               transition-all duration-500 overflow-hidden"
             >
@@ -222,7 +222,7 @@ export default function Home() {
         </h2>
 
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-          <div className="p-6 bg-white rounded-2xl shadow-sm">
+          <div className="p-6 bg-base-100 rounded-2xl shadow-sm">
             <h3 className="text-xl font-semibold text-blue-600 mb-2">
               Wide Selection
             </h3>
@@ -231,7 +231,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="p-6 bg-white rounded-2xl shadow-sm">
+          <div className="p-6 bg-base-100 rounded-2xl shadow-sm">
             <h3 className="text-xl font-semibold text-blue-600 mb-2">
               Affordable Prices
             </h3>
@@ -240,7 +240,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="p-6 bg-white rounded-2xl shadow-sm">
+          <div className="p-6 bg-base-100 rounded-2xl shadow-sm">
             <h3 className="text-xl font-semibold text-blue-600 mb-2">
               Secure Booking
             </h3>
@@ -261,7 +261,7 @@ export default function Home() {
           {["Sedan", "SUV", "Electric", "Van"].map((cat) => (
             <div
               key={cat}
-              className="px-6 py-3 border border-blue-600 text-blue-600 rounded-xl hover:bg-blue-600 hover:text-white transition cursor-pointer"
+              className="px-6 py-3 border border-blue-600 text-blue-600 rounded-xl hover:bg-blue-600 hover:text-base-content transition cursor-pointer"
             >
               {cat}
             </div>

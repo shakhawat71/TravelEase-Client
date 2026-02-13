@@ -1,10 +1,13 @@
 import { useContext } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
+import { ThemeContext } from "../context/ThemeContext";
+import { Sun, Moon } from "lucide-react";
 import toast from "react-hot-toast";
 
 export default function Navbar() {
   const { user, logoutUser } = useContext(AuthContext);
+  const { theme, toggleTheme } = useContext(ThemeContext);
 
   const navLinkStyle = ({ isActive }) =>
     isActive
@@ -14,7 +17,7 @@ export default function Navbar() {
   const buttonStyle = ({ isActive }) =>
     isActive
       ? "btn btn-sm bg-blue-600 text-white border-none"
-      : "btn btn-sm bg-white text-gray-700 border border-gray-300 hover:bg-blue-50";
+      : "btn btn-sm bg-base-100 text-gray-700 border border-gray-300 hover:bg-blue-50";
 
   const handleLogout = () => {
     logoutUser()
@@ -23,7 +26,8 @@ export default function Navbar() {
   };
 
   return (
-    <div className="navbar bg-white shadow-sm px-4">
+    <div className="navbar bg-base-100 shadow-sm px-4 transition-all duration-300">
+      
       {/* LEFT */}
       <div className="navbar-start">
         {/* MOBILE DROPDOWN */}
@@ -38,7 +42,7 @@ export default function Navbar() {
 
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-1 p-2 shadow bg-white rounded-box w-52"
+            className="menu menu-sm dropdown-content mt-3 z-10 p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li><NavLink to="/" className={navLinkStyle}>Home</NavLink></li>
             <li><NavLink to="/allVehicles" className={navLinkStyle}>All Vehicles</NavLink></li>
@@ -79,7 +83,20 @@ export default function Navbar() {
       </div>
 
       {/* RIGHT */}
-      <div className="navbar-end">
+      <div className="navbar-end flex items-center gap-3">
+
+        {/* 🌙 Theme Toggle */}
+        <button
+          onClick={toggleTheme}
+          className="btn btn-ghost btn-circle"
+        >
+          {theme === "light" ? (
+            <Moon size={20} />
+          ) : (
+            <Sun size={20} className="text-yellow-400" />
+          )}
+        </button>
+
         {!user ? (
           <div className="flex gap-2">
             <NavLink to="/login" className={buttonStyle}>
@@ -91,7 +108,6 @@ export default function Navbar() {
           </div>
         ) : (
           <div className="dropdown dropdown-end">
-            {/* Avatar button */}
             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full border border-blue-200">
                 <img
@@ -102,13 +118,12 @@ export default function Navbar() {
               </div>
             </div>
 
-            {/* Dropdown */}
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-1 p-4 shadow bg-white rounded-box w-72 border border-blue-100"
+              className="menu menu-sm dropdown-content mt-3 z-10 p-4 shadow bg-base-100 rounded-box w-72 border border-blue-100"
             >
               <li className="pointer-events-none">
-                <div className="flex items-center gap-3 bg-white">
+                <div className="flex items-center gap-3">
                   <img
                     className="w-12 h-12 rounded-full border border-blue-200 object-cover"
                     src={user?.photoURL || "https://i.ibb.co/2FsfXqM/user.png"}
@@ -119,7 +134,7 @@ export default function Navbar() {
                     <p className="font-semibold text-blue-600">
                       {user?.displayName || "No Name"}
                     </p>
-                    <p className="text-xs text-gray-600 break-all">
+                    <p className="text-xs break-all">
                       {user?.email}
                     </p>
                   </div>

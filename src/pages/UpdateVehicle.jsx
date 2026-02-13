@@ -158,15 +158,15 @@ export default function UpdateVehicle() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-white">
+      <div className="min-h-screen flex items-center justify-center bg-base-100">
         <span className="loading loading-spinner loading-lg text-blue-600"></span>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-white max-w-4xl mx-auto px-4 py-10">
-      <div className="border border-blue-100 shadow-lg rounded-2xl p-8 bg-white">
+    <div className="min-h-screen bg-base-100 max-w-4xl mx-auto px-4 py-10">
+      <div className="border border-blue-100 shadow-lg rounded-2xl p-8 bg-base-100">
         <h2 className="text-3xl font-bold text-blue-600 mb-6 text-center">
           Update Vehicle
         </h2>
@@ -217,7 +217,7 @@ export default function UpdateVehicle() {
               name="category"
               value={form.category}
               onChange={onChange}
-              className="w-full px-4 py-2 border border-blue-200 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full px-4 py-2 border border-blue-200 rounded-lg bg-base-100 focus:outline-none focus:ring-2 focus:ring-blue-400"
               required
             >
               <option value="" disabled>
@@ -240,7 +240,7 @@ export default function UpdateVehicle() {
               name="categories"
               value={form.categories}
               onChange={onChange}
-              className="w-full px-4 py-2 border border-blue-200 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full px-4 py-2 border border-blue-200 rounded-lg bg-base-100 focus:outline-none focus:ring-2 focus:ring-blue-400"
             >
               {TAG_OPTIONS.map((t) => (
                 <option key={t} value={t}>
@@ -275,7 +275,7 @@ export default function UpdateVehicle() {
               name="availability"
               value={form.availability}
               onChange={onChange}
-              className="w-full px-4 py-2 border border-blue-200 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full px-4 py-2 border border-blue-200 rounded-lg bg-base-100 focus:outline-none focus:ring-2 focus:ring-blue-400"
               required
             >
               {AVAILABILITY_OPTIONS.map((a) => (

@@ -4,6 +4,8 @@ import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 
+import { ThemeProvider } from "./context/ThemeContext";
+
 import "./index.css";
 
 import MainLayout from "./layouts/MainLayout";
@@ -92,9 +94,12 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <AuthProvider>
-      <RouterProvider router={router} />
-      <Toaster position="top-right" />
+      <ThemeProvider>
+        <RouterProvider router={router} />
+        <Toaster position="top-right" />
+      </ThemeProvider>
     </AuthProvider>
   </React.StrictMode>
 );
+
 

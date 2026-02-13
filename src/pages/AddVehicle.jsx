@@ -66,8 +66,8 @@ export default function AddVehicle() {
   };
 
   return (
-    <div className="min-h-screen bg-white max-w-4xl mx-auto px-4 py-10">
-      <div className="border border-blue-100 shadow-lg rounded-2xl p-8 bg-white">
+    <div className="min-h-screen bg-base-100 max-w-4xl mx-auto px-4 py-10">
+      <div className="border border-blue-100 shadow-lg rounded-2xl p-8 bg-base-100">
         <h2 className="text-3xl font-bold text-blue-600 mb-8 text-center">
           Add a Vehicle
         </h2>
@@ -108,7 +108,7 @@ export default function AddVehicle() {
             </label>
             <select
               name="category"
-              className="w-full px-4 py-2 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 bg-white"
+              className="w-full px-4 py-2 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 bg-base-100"
               required
               defaultValue=""
             >
@@ -129,7 +129,7 @@ export default function AddVehicle() {
             </label>
             <select
               name="categories"
-              className="w-full px-4 py-2 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 bg-white"
+              className="w-full px-4 py-2 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 bg-base-100"
               defaultValue="General"
             >
               <option value="General">General</option>
@@ -176,7 +176,7 @@ export default function AddVehicle() {
             </label>
             <select
               name="availability"
-              className="w-full px-4 py-2 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 bg-white"
+              className="w-full px-4 py-2 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 bg-base-100"
               required
               defaultValue="Available"
             >

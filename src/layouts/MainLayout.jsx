@@ -1,16 +1,14 @@
-// import { Outlet } from "react-router-dom";
-import { Outlet } from "react-router";
+import { Outlet } from "react-router-dom";
 import Navbar from "../components/Navbar";
+// import Footer from "../components/Footer"; // if you have footer
 
-const MainLayout = () => {
+export default function MainLayout() {
   return (
-    <>
-      <Navbar />
-      <div className="min-h-screen bg-white text-black">
-        <Outlet></Outlet>
-      </div>
-    </>
-  );
-};
+    <div className="min-h-screen bg-base-100 text-base-content transition-colors duration-300">
 
-export default MainLayout;
+      <Navbar />
+      <Outlet />
+      {/* <Footer /> */}
+    </div>
+  );
+}
