@@ -1,16 +1,47 @@
-# React + Vite
+# 🚗 TravelEase
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+TravelEase is a modern vehicle booking platform where users can explore, add, manage, and book vehicles easily and securely.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🌐 Live Website
 
-## React Compiler
+🔗 Client Live URL: 
+🔗 Server Live URL:  
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## ✨ Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. 🔐 Secure Authentication (Email/Password & Google Login)
+2. 🚘 Add, Update & Delete Vehicles (Private Routes Protected)
+3. 📅 Book Vehicles & Cancel Booking with Confirmation Modal
+4. 🔍 Advanced Filtering & Sorting (Category, Price, Location Search)
+5. 🌙 Dark / Light Theme Toggle for Entire Website
+
+---
+
+## 🛠️ Technologies Used
+
+### Frontend
+- React.js
+- React Router DOM
+- Tailwind CSS
+- DaisyUI
+- Framer Motion (Animations)
+- Firebase Authentication
+- Axios
+
+### Backend
+- Node.js
+- Express.js
+- MongoDB Atlas
+
+---
+
+## 🔐 Authentication
+
+- Email & Password Login
+- Google Authentication
+- Private Routes Protected
+- Persistent Login State
